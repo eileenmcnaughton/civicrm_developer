@@ -1,0 +1,188 @@
+<?php 
+
+/*
+ * Implementation of CiviCRM _civicrm_pre hook
+ * 
+ * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpre
+ */
+function civicrm_developer_civicrm_pre( $op, $objectName, $objectId, &$objectRef ) {
+
+  drupal_set_message("_civicrm_pre hook called: op is $op, objectName is $objectName, objectID is $objectId"); 
+  dpm ($objectRef); 
+
+}
+
+/*
+ * Implementation of CiviCRM _civicrm_post hook
+ * 
+ * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpost
+ */
+function civicrm_developer_civicrm_post( $op, $objectName, $objectId, &$objectRef ) {
+  $msg = "_civicrm_post hook called: op is $op, objectName is $objectName, objectID is $objectId";
+  drupal_set_message("_civicrm_post hook called: op is $op, objectName is $objectName, objectID is $objectId"); 
+  dpm ($objectRef, $objectName . "civicrm_post hook"); 
+
+
+}
+/*
+ * Implementation of CiviCRM _civicrm_links hook
+ * 
+ * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmlinks
+ */
+function civicrm_developer_civicrm_links( $op, $objectName, $objectId, &$links )
+{
+  drupal_set_message("_civicrm_links hook called: op is $op, objectName is $objectName, objectID is $objectId"); 
+  dpm ($links, "links"); 
+
+}
+/*
+ * Implementation of CiviCRM _civicrm_validate hook
+ * 
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmvalidate
+ */
+
+function civicrm_developer_civicrm_validate($formName, &$fields, &$files, &$form ){
+
+  drupal_set_message("_civicrm_links hook called: formName is $formName"); 
+  dpm ($fields); 
+  dpm ($files); 
+  dpm ($form); 
+ }
+/*
+ * Implementation of CiviCRM _civicrm_validate hook. This hook is invoked when building a CiviCRM form. This hook should also be used to set the default values of a form element
+ * 
+ * @formName string the name of the form
+ * @form object reference to the form object 
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmvalidate
+ */
+ function civicrm_developer_civicrm_buildForm( $formName, &$form ){
+  drupal_set_message("_civicrm_buildForm hook called: formName is $formName"); 
+  dpm ($form); 
+}
+ 
+/*
+ * Implementation of CiviCRM _civicrm_postProcess hook. This hook is invoked when a CiviCRM 
+ * form is submitted. If the module has injected any form elements, this hook should save the values in the database.
+ *
+ * @formName string the name of the form
+ * @form object reference to the form object 
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
+ */
+function civicrm_developer_civicrm_postProcess( $formName, &$form ){
+  drupal_set_message("_civicrm_postProcess hook called: formName is $formName"); 
+	dpm( get_defined_vars() );
+}
+
+/*
+ * Implementation of CiviCRM _civicrm_pageRun hook. This hook is called before a CiviCRM page is rendered
+ * 
+ * @formName string the name of the form
+ * @form object reference to the form object 
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
+ */
+function civicrm_developer_civicrm_pageRun(&$page){
+  drupal_set_message("_civicrm_pageRun hook called.  This hook is called before a CiviCRM page is rendered.
+
+Note that this does not execute on every CiviCRM page in the general sense. CiviCRM's pages are classified as either 'Forms' or 'Pages', and this only runs on pages classified as 'Pages'. If you are not sure if a particular page is a Page, test it by adding some temporary debug code to /CRM/Utils/Hook.php"); 
+	dpm($page );
+}
+
+
+/*
+ * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmcustom
+ * hook_civicrm_custom( $op, $groupID, $entityID, &$params )
+ */
+
+function civicrm_developer_civicrm_custom($op, $groupID, $entityID, &$params){
+  drupal_set_message("<em>_civicrm_custom</em> hook called: This hook is called AFTER the db write on a custom table<p>op is $op. </p><br> entityID is $entityID<br> groupID is $groupID.<br>"); 
+	dpm($params );
+}
+
+/*# 
+# hook_civicrm_custom
+# hook_civicrm_aclWhereClause
+# hook_civicrm_aclGroup
+# hook_civicrm_dashboard
+# hook_civicrm_xmlMenu
+# hook_civicrm_alterPaymentProcessorParams
+#
+# hook_civicrm_copy
+# hook_civicrm_tokens
+# hook_civicrm_tokenValues
+# hook_civicrm_customFieldOptions
+# hook_civicrm_searchTasks
+*/
+/*
+ * Implementation of CiviCRM _civicrm_postProcess hook. This hook is invoked when a CiviCRM 
+ * form is submitted. If the module has injected any form elements, this hook should save the values in the database.
+ *
+ * @formName string the name of the form
+ * @form object reference to the form object 
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
+ */
+function civicrm_developer_civicrm_buildAmount( $pageType,&$form,&$amount ){
+  
+  drupal_set_message("_civicrm_buildAmount hook called: pageType is $pageType"); 
+	//get_defined_vars doesn't work here because it just reports 'recursive' - left in to remin
+	//me why I'm not using it so I don't try to switch :-)
+  // dpm( get_defined_vars() );
+	 dpm($amount,'amount');
+	 dpm($form,'form');
+}
+
+/*
+ * Implementation of CiviCRM _civicrm_tabs hook. This hook is called when composing the tabs to display when viewing a contact
+ *
+ * @param array $tabs array of tabs to display
+ * @param string  $contactID id of contact being displayed
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmtabs
+ */
+function civicrm_developer_civicrm_tabs(&$tabs, $contactID){
+  drupal_set_message("_civicrm_tabs hook called"); 
+  
+  dpm( $tabs,'tabs');
+  dpm($contactID,'contactID');
+}
+
+
+/*
+ * Implementation of CiviCRM _civicrm_summary hook. This hook is called when contact summary is rendered and you can add on top, below or replace summary with your own html content.
+ *
+ * @param array $tabs array of tabs to display
+ * @param string  $contactID id of contact being displayed
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmsummary
+ */
+function civicrm_developer_civicrm_summary($contactID, &$content, &$contentPlacement){
+  drupal_set_message("_civicrm_summary hook called"); 
+  dpm( $content,'content');
+  dpm( $contentPlacement ,'contentPlacement');
+  dpm($contactID,'contactID');
+}
+
+
+/*
+ * Implementation of CiviCRM _civicrm_searchtasks hook. This hook is called to display the list of actions allowed after doing a contact search. This allows the module developer to inject additional actions or to remove existing actions.
+ * 
+ * @objectType - the object for this search (currently only Contact, in later versions we will add membership / contribution / participants etc)
+ * @tasks the current set of tasks for that custom field. You can add/remove existing tasks. Each task needs to have a title and a class.
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmsearchtasks
+ */
+function civicrm_developer_civicrm_searchtasks( $objectType, &$tasks){
+  drupal_set_message("_civicrm_pageRun hook called: formName is $formName. This hook is called to display the list of actions allowed after doing a contact search. This allows the module developer to inject additional actions or to remove existing actions."); 
+	dpm($objectType,'objectType' );
+  dpm($tasks,'tasks' );
+}
+/*
+# hook_civicrm_mailingGroups
+
+# hook_civicrm_contactListQuery
+# hook_civicrm_membershipTypeValues
+# hook_civicrm_alterMailParams
+# hook_civicrm_caseSummary
+# hook_civicrm_config
+# hook_civicrm_navigationMenu
+# hook_civicrm_merge
+# hook_civicrm_export
+# hook_civicrm_emailProcessor
+*/
+
