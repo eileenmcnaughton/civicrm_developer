@@ -7,7 +7,7 @@
  */
 function civicrm_developer_civicrm_pre( $op, $objectName, $objectId, &$objectRef ) {
 
-  drupal_set_message("_civicrm_pre hook called: op is $op, objectName is $objectName, objectID is $objectId"); 
+  drupal_set_message("hook_civicrm_pre called: op is $op, objectName is $objectName, objectID is $objectId"); 
   dpm ($objectRef); 
 
 }
@@ -18,8 +18,8 @@ function civicrm_developer_civicrm_pre( $op, $objectName, $objectId, &$objectRef
  * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpost
  */
 function civicrm_developer_civicrm_post( $op, $objectName, $objectId, &$objectRef ) {
-  $msg = "_civicrm_post hook called: op is $op, objectName is $objectName, objectID is $objectId";
-  drupal_set_message("_civicrm_post hook called: op is $op, objectName is $objectName, objectID is $objectId"); 
+  $msg = "hook_civicrm_post called: op is $op, objectName is $objectName, objectID is $objectId";
+  drupal_set_message("hook_civicrm_post called: op is $op, objectName is $objectName, objectID is $objectId"); 
   dpm ($objectRef, $objectName . "civicrm_post hook"); 
 
 
@@ -31,7 +31,7 @@ function civicrm_developer_civicrm_post( $op, $objectName, $objectId, &$objectRe
  */
 function civicrm_developer_civicrm_links( $op, $objectName, $objectId, &$links )
 {
-  drupal_set_message("_civicrm_links hook called: op is $op, objectName is $objectName, objectID is $objectId"); 
+  drupal_set_message("hook_civicrm_links called: op is $op, objectName is $objectName, objectID is $objectId"); 
   dpm ($links, "links"); 
 
 }
@@ -43,7 +43,7 @@ function civicrm_developer_civicrm_links( $op, $objectName, $objectId, &$links )
 
 function civicrm_developer_civicrm_validate($formName, &$fields, &$files, &$form ){
 
-  drupal_set_message("_civicrm_links hook called: formName is $formName"); 
+  drupal_set_message("hook_civicrm_links called: formName is $formName"); 
   dpm ($fields); 
   dpm ($files); 
   dpm ($form); 
@@ -56,7 +56,7 @@ function civicrm_developer_civicrm_validate($formName, &$fields, &$files, &$form
  * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmvalidate
  */
  function civicrm_developer_civicrm_buildForm( $formName, &$form ){
-  drupal_set_message("_civicrm_buildForm hook called: formName is $formName"); 
+  drupal_set_message("hook_civicrm_buildForm called: formName is $formName"); 
   dpm ($form); 
 }
  
@@ -69,7 +69,7 @@ function civicrm_developer_civicrm_validate($formName, &$fields, &$files, &$form
  * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
  */
 function civicrm_developer_civicrm_postProcess( $formName, &$form ){
-  drupal_set_message("_civicrm_postProcess hook called: formName is $formName"); 
+  drupal_set_message("hook_civicrm_postProcess called: formName is $formName"); 
 	dpm( get_defined_vars() );
 }
 
@@ -81,7 +81,7 @@ function civicrm_developer_civicrm_postProcess( $formName, &$form ){
  * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
  */
 function civicrm_developer_civicrm_pageRun(&$page){
-  drupal_set_message("_civicrm_pageRun hook called.  This hook is called before a CiviCRM page is rendered.
+  drupal_set_message("hook_civicrm_pageRun called.  This hook is called before a CiviCRM page is rendered.
 
 Note that this does not execute on every CiviCRM page in the general sense. CiviCRM's pages are classified as either 'Forms' or 'Pages', and this only runs on pages classified as 'Pages'. If you are not sure if a particular page is a Page, test it by adding some temporary debug code to /CRM/Utils/Hook.php"); 
 	dpm($page );
@@ -94,7 +94,7 @@ Note that this does not execute on every CiviCRM page in the general sense. Civi
  */
 
 function civicrm_developer_civicrm_custom($op, $groupID, $entityID, &$params){
-  drupal_set_message("<em>_civicrm_custom</em> hook called: This hook is called AFTER the db write on a custom table<p>op is $op. </p><br> entityID is $entityID<br> groupID is $groupID.<br>"); 
+  drupal_set_message("<em>_civicrm_custom</em> called: This hook is called AFTER the db write on a custom table<p>op is $op. </p><br> entityID is $entityID<br> groupID is $groupID.<br>"); 
 	dpm($params );
 }
 
@@ -122,7 +122,7 @@ function civicrm_developer_civicrm_custom($op, $groupID, $entityID, &$params){
  */
 function civicrm_developer_civicrm_buildAmount( $pageType,&$form,&$amount ){
   
-  drupal_set_message("_civicrm_buildAmount hook called: pageType is $pageType"); 
+  drupal_set_message("hook_civicrm_buildAmount called: pageType is $pageType"); 
 	//get_defined_vars doesn't work here because it just reports 'recursive' - left in to remin
 	//me why I'm not using it so I don't try to switch :-)
   // dpm( get_defined_vars() );
@@ -138,7 +138,7 @@ function civicrm_developer_civicrm_buildAmount( $pageType,&$form,&$amount ){
  * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmtabs
  */
 function civicrm_developer_civicrm_tabs(&$tabs, $contactID){
-  drupal_set_message("_civicrm_tabs hook called"); 
+  drupal_set_message("hook_civicrm_tabs called"); 
   
   dpm( $tabs,'tabs');
   dpm($contactID,'contactID');
@@ -153,7 +153,7 @@ function civicrm_developer_civicrm_tabs(&$tabs, $contactID){
  * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmsummary
  */
 function civicrm_developer_civicrm_summary($contactID, &$content, &$contentPlacement){
-  drupal_set_message("_civicrm_summary hook called"); 
+  drupal_set_message("hook_civicrm_summary called"); 
   dpm( $content,'content');
   dpm( $contentPlacement ,'contentPlacement');
   dpm($contactID,'contactID');
@@ -168,7 +168,7 @@ function civicrm_developer_civicrm_summary($contactID, &$content, &$contentPlace
  * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmsearchtasks
  */
 function civicrm_developer_civicrm_searchtasks( $objectType, &$tasks){
-  drupal_set_message("_civicrm_pageRun hook called: formName is $formName. This hook is called to display the list of actions allowed after doing a contact search. This allows the module developer to inject additional actions or to remove existing actions."); 
+  drupal_set_message("hook_civicrm_searchTasks called: objectType is $objectType. This hook is called to display the list of actions allowed after doing a contact search. This allows the module developer to inject additional actions or to remove existing actions."); 
 	dpm($objectType,'objectType' );
   dpm($tasks,'tasks' );
 }
