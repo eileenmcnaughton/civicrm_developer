@@ -168,6 +168,25 @@ function civicrm_developer_civicrm_searchtasks($objectType, &$tasks){
   dpm($objectType,'objectType');
   dpm($tasks,'tasks');
 }
+
+/**
+ * Implementation of CiviCRM _civicrm_searchcolumns hook. This hook is called after a search is done. This allows the developer to modify the headers and/or the values that are displayed as part of this search. The BIGGEST drawback with this hook is that you may need to modify the result template to include your fields. The result files are CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl. However, if you use the same number of columns, you can overwrite the existing columns with the values that you want displayed. This is a HACK, but avoids template modification.
+ *
+ * @objectName - the object for this search - activity, campaign, case, contact, contribution, event, grant, membership, and pledge are supported.
+ * @headers - array (reference) - the list of column headers, an associative array with keys: ( name, sort, order )
+ * @rows - array (reference) - the list of values, an associate array with fields that are displayed for that component
+ * @selector - array (reference) - the selector object. Allows you access to the context of the search
+ * @source http://wiki.civicrm.org/confluence/display/CRMDOC42/Hook+Reference#HookReference-hook_civicrm_searchColumns
+ */
+function civicrm_developer_civicrm_searchcolumns( $objectName, &$headers, &$rows, &$selector ){
+  drupal_set_message("hook_civicrm_searchColumns called: objectName is $objectName. This hook is called after a search is done. This allows the developer to modify the headers and/or the values that are displayed as part of this search. The BIGGEST drawback with this hook is that you may need to modify the result template to include your fields. The result files are CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl. However, if you use the same number of columns, you can overwrite the existing columns with the values that you want displayed. This is a HACK, but avoids template modification.");
+  dpm($objectName,'objectType');
+  dpm($headers,'headers');
+  dpm($rows, 'rows');
+  dpm($selector,'selector');
+}
+
+
 /*
 # hook_civicrm_mailingGroups
 
