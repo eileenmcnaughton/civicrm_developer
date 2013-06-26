@@ -1,8 +1,8 @@
 ; $Id$
 name = CiviCRM developer module
 description = Exposes information about CiviCRM hooks via devel module
-core = 7.x
-version = 7.x-1.0
+core = 6.x
+version = 6.x-1.0
 package = CiviCRM
 dependencies[] = civicrm
 dependencies[] = devel
