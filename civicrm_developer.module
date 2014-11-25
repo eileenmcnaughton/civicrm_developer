@@ -3,7 +3,7 @@
 /**
  * Implementation of CiviCRM _civicrm_pre hook
  *
- * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpre
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_pre
  */
 function civicrm_developer_civicrm_pre($op, $objectName, $objectId, &$objectRef) {
   drupal_set_message("hook_civicrm_pre called: op is $op, objectName is $objectName, objectID is $objectId");
@@ -13,7 +13,7 @@ function civicrm_developer_civicrm_pre($op, $objectName, $objectId, &$objectRef)
 /**
  * Implementation of CiviCRM _civicrm_post hook
  *
- * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpost
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_post
  */
 function civicrm_developer_civicrm_post($op, $objectName, $objectId, &$objectRef) {
   $msg = "hook_civicrm_post called: op is $op, objectName is $objectName, objectID is $objectId";
@@ -24,7 +24,7 @@ function civicrm_developer_civicrm_post($op, $objectName, $objectId, &$objectRef
 /**
  * Implementation of CiviCRM _civicrm_links hook
  *
- * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmlinks
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_links
  */
 function civicrm_developer_civicrm_links($op, $objectName, $objectId, &$links)
 {
@@ -35,7 +35,7 @@ function civicrm_developer_civicrm_links($op, $objectName, $objectId, &$links)
 /**
  * Implementation of CiviCRM _civicrm_validate hook
  *
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmvalidate
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_validate
  */
 function civicrm_developer_civicrm_validate($formName, &$fields, &$files, &$form){
   drupal_set_message("hook_civicrm_links called: formName is $formName");
@@ -59,7 +59,7 @@ function civicrm_developer_civicrm_preProcess($formName, &$form) {
  *
  * @formName string the name of the form
  * @form object reference to the form object
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmvalidate
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_buildForm
  */
 function civicrm_developer_civicrm_buildForm($formName, &$form){
   drupal_set_message("hook_civicrm_buildForm called: formName is $formName");
@@ -72,7 +72,7 @@ function civicrm_developer_civicrm_buildForm($formName, &$form){
  *
  * @formName string the name of the form
  * @form object reference to the form object
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_postProcess
  */
 function civicrm_developer_civicrm_postProcess($formName, &$form){
   drupal_set_message("hook_civicrm_postProcess called: formName is $formName");
@@ -84,7 +84,7 @@ function civicrm_developer_civicrm_postProcess($formName, &$form){
  *
  * @formName string the name of the form
  * @form object reference to the form object
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_pageRun
  */
 function civicrm_developer_civicrm_pageRun(&$page){
   drupal_set_message("hook_civicrm_pageRun called.  This hook is called before a CiviCRM page is rendered.
@@ -95,10 +95,8 @@ Note that this does not execute on every CiviCRM page in the general sense. Civi
 
 
 /**
- * http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmcustom
- * hook_civicrm_custom($op, $groupID, $entityID, &$params)
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_custom
  */
-
 function civicrm_developer_civicrm_custom($op, $groupID, $entityID, &$params){
   drupal_set_message("<em>_civicrm_custom</em> called: This hook is called AFTER the db write on a custom table<p>op is $op. </p><br> entityID is $entityID<br> groupID is $groupID.<br>");
   dpm($params);
@@ -124,7 +122,7 @@ function civicrm_developer_civicrm_custom($op, $groupID, $entityID, &$params){
  *
  * @formName string the name of the form
  * @form object reference to the form object
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmpostProcess
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_buildAmount
  */
 function civicrm_developer_civicrm_buildAmount($pageType,&$form,&$amount){
 
@@ -141,7 +139,7 @@ function civicrm_developer_civicrm_buildAmount($pageType,&$form,&$amount){
  *
  * @param array $tabs array of tabs to display
  * @param string  $contactID id of contact being displayed
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC33/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmtabs
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_tabs
  */
 function civicrm_developer_civicrm_tabs(&$tabs, $contactID){
   drupal_set_message("hook_civicrm_tabs called");
@@ -156,7 +154,7 @@ function civicrm_developer_civicrm_tabs(&$tabs, $contactID){
  *
  * @param array $tabs array of tabs to display
  * @param string  $contactID id of contact being displayed
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmsummary
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_summary
  */
 function civicrm_developer_civicrm_summary($contactID, &$content, &$contentPlacement){
   drupal_set_message("hook_civicrm_summary called");
@@ -171,7 +169,7 @@ function civicrm_developer_civicrm_summary($contactID, &$content, &$contentPlace
  *
  * @objectType - the object for this search (currently only Contact, in later versions we will add membership / contribution / participants etc)
  * @tasks the current set of tasks for that custom field. You can add/remove existing tasks. Each task needs to have a title and a class.
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC/CiviCRM+hook+specification#CiviCRMhookspecification-hookcivicrmsearchtasks
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_searchTasks
  */
 function civicrm_developer_civicrm_searchtasks($objectType, &$tasks){
   drupal_set_message("hook_civicrm_searchTasks called: objectType is $objectType. This hook is called to display the list of actions allowed after doing a contact search. This allows the module developer to inject additional actions or to remove existing actions.");
@@ -186,7 +184,7 @@ function civicrm_developer_civicrm_searchtasks($objectType, &$tasks){
  * @headers - array (reference) - the list of column headers, an associative array with keys: ( name, sort, order )
  * @rows - array (reference) - the list of values, an associate array with fields that are displayed for that component
  * @selector - array (reference) - the selector object. Allows you access to the context of the search
- * @source http://wiki.civicrm.org/confluence/display/CRMDOC42/Hook+Reference#HookReference-hook_civicrm_searchColumns
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_searchColumns
  */
 function civicrm_developer_civicrm_searchcolumns( $objectName, &$headers, &$rows, &$selector ){
   drupal_set_message("hook_civicrm_searchColumns called: objectName is $objectName. This hook is called after a search is done. This allows the developer to modify the headers and/or the values that are displayed as part of this search. The BIGGEST drawback with this hook is that you may need to modify the result template to include your fields. The result files are CRM/{Contact,Contribute,Member,Event…}/Form/Selector.tpl. However, if you use the same number of columns, you can overwrite the existing columns with the values that you want displayed. This is a HACK, but avoids template modification.");
