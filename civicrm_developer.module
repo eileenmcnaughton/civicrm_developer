@@ -45,6 +45,16 @@ function civicrm_developer_civicrm_validate($formName, &$fields, &$files, &$form
 }
 
 /**
+ * Implementation of CiviCRM _civicrm_preProcess hook
+ *
+ * @link http://wiki.civicrm.org/confluence/display/CRMDOC/hook_civicrm_preProcess
+ */
+function civicrm_developer_civicrm_preProcess($formName, &$form) {
+  drupal_set_message("hook_civicrm_preProcess called: formName is $formName");
+  dpm($form);
+}
+
+/**
  * Implementation of CiviCRM _civicrm_validate hook. This hook is invoked when building a CiviCRM form. This hook should also be used to set the default values of a form element
  *
  * @formName string the name of the form
